@@ -1,0 +1,2 @@
+# cubic
+Cubic equation solver
