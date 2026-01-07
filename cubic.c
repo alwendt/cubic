@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 typedef struct complex {
     double real, imag;
     } COMPLEX;
 
-COMPLEX Complex(),      /* returns a complex made from the real args */
-   ctimes(),                    /* product -- dyadic */
-   cplus();                     /* sum -- dyadic */
+COMPLEX Complex(double x, double y); /* returns a complex made from the real args */
+COMPLEX ctimes(COMPLEX a, COMPLEX b); /* product -- dyadic */
+COMPLEX cplus(COMPLEX a, COMPLEX b);  /* sum -- dyadic */
 
 #define Pi 3.14159265358979323846
 
@@ -38,9 +39,7 @@ COMPLEX Complex(),      /* returns a complex made from the real args */
  *
  * Changed by: Alan Wendt, U of AZ CS, arizona!wendt.
  */
-main(argc, argv)
-    int argc;
-    char **argv;
+int main(int argc, char **argv)
     {
     /* Sorry about the variable names; they are chosen to match CRC */
     double o, p, q, r, a, b, t, l, m;
@@ -146,11 +145,11 @@ main(argc, argv)
         fabs(root_3.imag));
 
     printf("\n");
+    return 0;
     }
 
 /* complex math routines.  */
-COMPLEX Complex(x, y)
-    double x, y;
+COMPLEX Complex(double x, double y)
     {
     COMPLEX result;
 
@@ -159,8 +158,7 @@ COMPLEX Complex(x, y)
     return result;
     }
 
-COMPLEX ctimes(a, b)
-    COMPLEX a, b;
+COMPLEX ctimes(COMPLEX a, COMPLEX b)
     {
     COMPLEX result;
 
@@ -169,8 +167,7 @@ COMPLEX ctimes(a, b)
     return result;
     }
 
-COMPLEX cplus(a, b)
-    COMPLEX a, b;
+COMPLEX cplus(COMPLEX a, COMPLEX b)
     {
     COMPLEX result;
     result.real = a.real + b.real;
